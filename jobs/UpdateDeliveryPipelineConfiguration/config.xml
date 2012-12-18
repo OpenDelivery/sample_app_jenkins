@@ -7,11 +7,6 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>ArtifactUrl</name>
-          <description></description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
           <name>ProductionDatabaseIP</name>
           <description></description>
           <defaultValue></defaultValue>
@@ -132,17 +127,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>if [ -n &quot;${ArtifactUrl}&quot; ]
-then
-ruby ${WORKSPACE}/lib/set_properties.rb --sdbdomain ${SIMPLEDB_STACK} \
-                                        --property ArtifactUrl \
-                                        --value ${ArtifactUrl} \
-                                        --itemname properties
-else
-echo &quot;staying the same&quot;
-fi
-
-if [ -n &quot;${DevelopmentDomain}&quot; ]
+      <command>if [ -n &quot;${DevelopmentDomain}&quot; ]
 then
 ruby ${WORKSPACE}/lib/set_properties.rb --sdbdomain ${SIMPLEDB_STACK} \
                                         --property DevelopmentDomain \
